@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Búho Pixel Check",
+  "version": "1.3.2",
+  "description": "Panel de DevTools para detectar píxeles, tags y cookies de plataformas de analítica y MarTech. Con escaneo en MAIN world y parseo avanzado de GA4.",
+  "author": "OpenCode",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "cookies",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "devtools_page": "devtools.html",
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Búho Pixel Check</title>
+  <link rel="stylesheet" href="panel.css" />
+</head>
+<body>
+  <!-- Header con branding y controles -->
+  <header class="app-header">
+    <div class="brand">
+      <img id="app-logo" src="logo.png" alt="Búho Pixel Check" />
+      <div class="brand-text">
+        <h1>Búho Pixel Check</h1>
+        <span class="brand-subtitle">Inspector de píxeles, tags y cookies</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="btn-scan" class="btn btn-primary" title="Volver a escanear la página">
+        <span class="btn-icon">↻</span> Escanear
+      </button>
+      <button id="btn-export-csv" class="btn btn-secondary">CSV</button>
+      <button id="btn-export-json" class="btn btn-secondary">JSON</button>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Barra de estado / URL / Filtro -->
+  <section class="status-bar">
+    <div class="status-left">
+      <span id="scan-status">Listo para escanear</span>
+      <span id="scan-url" class="scan-url"></span>
+      <span id="scan-time" class="scan-time"></span>
+    </div>
+    <div class="status-right">
+      <label for="platform-filter" class="filter-label">Filtrar por plataforma:</label>
+      <select id="platform-filter" class="filter-select">
+        <option value="all">Todas las Plataformas</option>
+        <option value="Google Analytics 4">Google Analytics 4</option>
+        <option value="Google Tag Manager">Google Tag Manager</option>
+        <option value="Google Ads">Google Ads</option>
+        <option value="Floodlight">Floodlight</option>
+        <option value="Meta (Facebook)">Meta (Facebook)</option>
+        <option value="TikTok">TikTok</option>
+        <option value="QuantumMetric">QuantumMetric</option>
+        <option value="Adobe Analytics">Adobe Analytics</option>
+        <option value="Bing Ads">Bing Ads</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Tabla resumen de 5 columnas -->
+  <main class="results">
+    <table class="results-table" aria-describedby="table-summary">
+      <caption id="table-summary" class="sr-only">
+        Tabla resumen de plataformas, IDs de propiedad/píxel, cookies y parámetros únicos por ID, URL escaneada y fecha/hora.
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" class="col-platform">Plataforma</th>
+          <th scope="col" class="col-id">ID de Propiedad / Pixel</th>
+          <th scope="col" class="col-cookies">Cookies y Parámetros Únicos del ID</th>
+          <th scope="col" class="col-url">URL Escaneada</th>
+          <th scope="col" class="col-time">Fecha y Hora del Escaneo</th>
+        </tr>
+      </thead>
+      <tbody id="results-body">
+        <tr class="empty-row">
+          <td colspan="5" class="empty-state">
+            <strong>No hay datos aún</strong>
+            Haz clic en <em>Escanear</em> para analizar la página inspeccionada.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="app-footer">
+    Búho Pixel Check v1.3.2 — Marco Ramírez ramalf.com
+  </footer>
+
+  <script src="panel.js"></script>
+</body>
+</html>
